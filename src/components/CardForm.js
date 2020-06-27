@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
 import {validateCard} from '../action/index' ;
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import FormDisplay from './FormDisplay';
+import JSONPretty from 'react-json-pretty' ;
+import JSONPrettyMon from  'react-json-pretty/dist/monikai';
 
 export class CardForm extends Component {
   constructor(props){
    super(props) ;
    this.onchange  =  this.onchange.bind(this) ;
-   this.onSubmit =  this.onSubmit.bind(this) ;
-  }
-   state =  {
-     cardnumber :"",
-   } ;
+   this.onsubmit =  this.onsubmit.bind(this) ;
+   this.state =  {
+     id:"",
+        } ;
+  }    
+   
    onchange(event){
-    this.setState({[event.target.name]:event.target.value}) //note this approach 
-   }
-   onSubmit(e){
-    e.preventdefault() ;
-  const newproject  = {
-    cardnumber:this.state.cardnumber, 
-        };
-  console.log(newproject) ;
-  //calling the action creator 
-  this.props.createProject(newproject,this.props.history) ;
-   }
+     console.log(event.target.value) ;
+    this.setState({id:event.target.value}) //note this approach 
+           }
+   onsubmit(e){
+    e.preventDefault() ;
+  this.props.validateCard(this.state.id);  
+       }
+   formdispay(){
+    console.log('inside submit ',this.props.card) ;   
+    console.log(this.props.card.success) ;
+     }
     render() {
         return (
             <React.Fragment>
@@ -32,8 +36,8 @@ export class CardForm extends Component {
                         <div className="col-md-8 m-auto">
                             <h5 className="display-4 text-center">Mint Card Validation</h5>
                             <hr />
-                            <form>
-                                <div className="form-group" onSubmit={this.onSubmit}>
+                            <form onSubmit={this.onsubmit}>
+                                <div className="form-group" >
                                     <input type="text" className="form-control form-control-lg " 
                                     placeholder="Enter Card Number" 
                                     name="cardnumber"
@@ -44,9 +48,15 @@ export class CardForm extends Component {
                                     <p>{}</p>
                                 </div>
         
-                                <input type="submit" className="btn btn-primary btn-block mt-4" />
+                                <input type="submit" className="btn btn-primary btn-block mt-4" value="Validate" />
                             </form>
                         </div>
+                    </div>
+                     <div className="row"><br/><br/><br/>
+                     <br/><br/><br/>
+                     <div className="col-md-5"></div>
+              <div className=""> <JSONPretty data={this.props.card} theme={JSONPrettyMon}></JSONPretty> </div>                                    */}
+                      <div className="col-md-4"></div>
                     </div>
                 </div>
             </div>
@@ -55,9 +65,55 @@ export class CardForm extends Component {
         )
     }
 }
+const mapStateToProps = (state,props) => {
+   return  {
+    card:state.cardnumber,
+     }
+};
 
-const mapStateToProps = (state) => ({
-    cardnumber:state.cardnumber ,
-  })
+export default connect(mapStateToProps,{validateCard:validateCard})(CardForm)
 
-export default connect(mapStateToProps, {Validated:validateCard})(CardForm)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

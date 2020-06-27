@@ -7,7 +7,7 @@ export default class Header extends Component {
         return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
         <div className="container">
-            <Link className="navbar-brand" href="Dashboard.html">
+            <Link className="navbar-brand" to="/">
                 MInt financial Technology 
             </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
@@ -22,7 +22,7 @@ export default class Header extends Component {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/list">
+                        <Link className="nav-link" to="/card-scheme/start?start=1&limit=25">
                             List of Validated Card
                         </Link>
                     </li>
