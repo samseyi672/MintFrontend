@@ -1,6 +1,6 @@
 import { createStore,applyMiddleware,compose } from "redux" ;
 import thunk  from 'redux-thunk' ;
-
+import combineReducers from './reducers/index' ;
 
 const initialState = {};
 const middleware = [thunk];
@@ -10,7 +10,7 @@ const ReactReduxDevTools =
 
 if(window.navigator.userAgent.includes("Chrome")&& ReactReduxDevTools){  //only wokrs for chrome browsers 
 store = createStore(
-    ()=>{},
+    combineReducers,
    initialState,
    compose(
      applyMiddleware(...middleware),
@@ -19,7 +19,7 @@ store = createStore(
  );
 }else{  //  for  other  browsers
  store = createStore(
-  ()=>{} ,
+  combineReducers ,
    initialState,
    compose(
      applyMiddleware(...middleware)

@@ -7,7 +7,7 @@ export class Home extends Component {
         return (
             <React.Fragment>
                <Header/>  
-               <CardForm />
+               <CardForm />           
             </React.Fragment>
         )
     }

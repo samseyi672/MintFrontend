@@ -1,10 +1,8 @@
-import {GET_ERRORS} from "../action/types" ;
-
-
+import {VALIDATE_CARD} from '../action/types' ;
 
 export  default  (state={},action)=>{
    switch(action.type){
-    case GET_ERRORS:
+    case VALIDATE_CARD:
        return action.payload ;
     default:
         return state;

@@ -1,9 +1,144 @@
 import { combineReducers } from "redux";
-import errorReducer from "./errorReducer";
+import fetchCardList from "./fetchCardList";
+import validateCard from './validateCardReducer' ;
+import  errorReducer from './errorReducers' ;
 
 export default combineReducers({
   errors: errorReducer,
+  cardnumber:validateCard,
+   fetchcard:fetchCardList,
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

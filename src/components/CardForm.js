@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import {validateCard} from '../action/index' ;
+import { connect } from 'react-redux';
 
 export class CardForm extends Component {
   constructor(props){
    super(props) ;
    this.onchange  =  this.onchange.bind(this) ;
-  // this.onSubmit =  this.onSubmit.bind(this) ;
+   this.onSubmit =  this.onSubmit.bind(this) ;
   }
    state =  {
      cardnumber :"",
@@ -20,7 +21,7 @@ export class CardForm extends Component {
         };
   console.log(newproject) ;
   //calling the action creator 
-  //this.props.createProject(newproject,this.props.history) ;
+  this.props.createProject(newproject,this.props.history) ;
    }
     render() {
         return (
@@ -56,11 +57,7 @@ export class CardForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
-})
+    cardnumber:state.cardnumber ,
+  })
 
-const mapDispatchToProps = {
-    
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CardForm)
+export default connect(mapStateToProps, {Validated:validateCard})(CardForm)
